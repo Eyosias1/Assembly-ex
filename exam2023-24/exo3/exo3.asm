@@ -23,7 +23,7 @@ print_buffer:
     ; Print the content of Buffer
     mov eax, 4              ; System call number for sys_write (4)
     mov ebx, 1              ; File descriptor 1 (stdout)
-    mov ecx, leng         ; Pointer to the buffer where data is stored
+    mov ecx, leng           ; Pointer to the buffer where data is stored
     mov edx, 5              ; Number of bytes to write (1 byte)
     int 0x80                ; Call kernel
     ret                     ; Return from function
