@@ -10,7 +10,7 @@ global _start
 _start:
 
 mov eax, 0
-xor esi, esi
+xor esi, esi ; modif 2
 push eax 
 mov edi, 2
 
@@ -22,13 +22,17 @@ mov ecx, buff
 mov edx, 1
 int 0x80
 
+mov eax, buff
+call print_debug
+
 sub byte [buff], '0' ; modif 3 
+
 cmp byte [buff], 0
-;jl fin_input
+jl fin_input
 cmp  byte [buff], 9
 jg fin_input
 
-;call print_buffer
+
 
 mov edx, 0
 mov eax, [buff]
@@ -57,3 +61,11 @@ print_buffer:
     mov edx, 1              ; Number of bytes to write (1 byte)
     int 0x80                ; Call kernel
     ret     
+
+print_debug:
+    push eax
+    add byte [buff], '0' ; Convert back to ASCII for printing
+    call print_buffer
+    sub byte [buff], '0' ; Convert back to number
+    pop eax
+    ret
