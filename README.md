@@ -9,8 +9,15 @@ Exo 1
 nasm -f elf exo1.asm &&  ld -m elf_i386 -o exo1.elf exo1.o
 
 ./exo1.elf
-```
 
+```
+Exo 2
+
+```assembly
+nasm -f elf exo2.asm &&  ld -m elf_i386 -o exo2.elf exo2.o
+
+./exo2.elf
+```
 Exo 3
 
 ```assembly
